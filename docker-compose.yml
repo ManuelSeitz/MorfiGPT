@@ -1,0 +1,46 @@
+services:
+  app:
+    build: .
+    user: "node"
+    container_name: app
+    command: sleep infinity
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/apps/web/.next
+      - /app/apps/web/node_modules
+      - pnpm_cache:/home/node/.local/share/pnpm
+    ports:
+      - 3000:3000
+      - 8080:8080
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - postgres
+
+  postgres:
+    image: pgvector/pgvector:pg18-trixie
+    container_name: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: mydb
+    volumes:
+      - pgdata:/var/lib/postgresql
+    ports:
+      - 5432:5432
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@mail.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - 5050:80
+    depends_on:
+      - postgres
+
+volumes:
+  pnpm_cache:
+  pgdata:

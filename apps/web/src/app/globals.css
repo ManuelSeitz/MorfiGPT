@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+:root {
+  --background: var(--color-primary-50);
+  --foreground: var(--color-primary-900);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-nunito-sans);
+}
+
+@theme inline {
+  --color-primary-50: #fffaf5;
+  --color-primary-100: #fff1e0;
+  --color-primary-200: #fde2b8;
+  --color-primary-300: #f9d6a6;
+  --color-primary-400: #f8c78e;
+  --color-primary-500: #f4a261;
+  --color-primary-600: #e0894a;
+  --color-primary-700: #c26f3b;
+  --color-primary-800: #8f5030;
+  --color-primary-900: #4a2e1f;
+
+  --color-accent-50: #f2fbf5;
+  --color-accent-100: #e6f7ea;
+  --color-accent-200: #c7edcf;
+  --color-accent-300: #a8e6b0;
+  --color-accent-400: #7ddc8a;
+  --color-accent-500: #4caf50;
+  --color-accent-600: #3f9442;
+  --color-accent-700: #2e7d32;
+  --color-accent-800: #1f5a24;
+  --color-accent-900: #123916;
+
+  --color-red-50: #fff5f5;
+  --color-red-100: #ffeaea;
+  --color-red-200: #fdd5d5;
+  --color-red-300: #fbbcbc;
+  --color-red-400: #f59e9e;
+  --color-red-500: #e57373;
+  --color-red-600: #d65c5c;
+  --color-red-700: #b84a4a;
+  --color-red-800: #8f3838;
+  --color-red-900: #5c2424;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.dots span {
+  opacity: 0;
+  animation: blink 1.4s infinite;
+}
+
+.dots span:nth-child(1) {
+  animation-delay: 0s;
+}
+.dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0%,
+  80%,
+  100% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--color-primary-500) 0%,
+    var(--color-primary-400) 25%,
+    var(--color-primary-400) 50%,
+    var(--color-primary-400) 75%,
+    var(--color-primary-500) 100%
+  );
+
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shimmer 2.5s infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3.5s ease-in-out infinite;
+}

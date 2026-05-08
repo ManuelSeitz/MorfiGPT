@@ -1,0 +1,14 @@
+{
+  "name": "@repo/types",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./auth": "./auth.ts",
+    "./cart": "./cart.ts",
+    "./chats": "./chats.ts",
+    "./products": "./products.ts",
+    "./recipes": "./recipes.ts",
+    "./vtex": "./vtex.ts"
+  }
+}
