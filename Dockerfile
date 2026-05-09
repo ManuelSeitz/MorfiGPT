@@ -4,4 +4,9 @@ RUN corepack enable
 
 WORKDIR /app
 
-USER node
+COPY . .
+
+RUN pnpm install --frozen-lockfile
+RUN pnpm turbo run build --filter=api
+
+CMD ["pnpm", "--filter", "api", "start"]
