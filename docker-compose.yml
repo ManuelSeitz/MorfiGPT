@@ -7,6 +7,7 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+      - /app/apps/api/node_modules
       - /app/apps/web/.next
       - /app/apps/web/node_modules
       - pnpm_cache:/home/node/.local/share/pnpm
