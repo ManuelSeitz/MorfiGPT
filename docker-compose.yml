@@ -3,16 +3,13 @@ services:
     build: .
     user: "node"
     container_name: app
-    command: sleep infinity
+    command: pnpm turbo run dev
     volumes:
       - .:/app
       - /app/node_modules
-      - /app/apps/api/node_modules
-      - /app/apps/web/.next
-      - /app/apps/web/node_modules
-      - pnpm_cache:/home/node/.local/share/pnpm
     ports:
       - 3000:3000
+      - 8080:8080
       - 8080:8080
     environment:
       - NODE_ENV=development
