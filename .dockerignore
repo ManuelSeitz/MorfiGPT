@@ -1,3 +1,13 @@
-node_modules/
-.pnpm-store/
-.turbo/
+.git
+node_modules
+dist
+build
+.next
+.turbo
+.husky
+.github
+.cache
+.pnpm-store
+.env
+.env.*
+*.log

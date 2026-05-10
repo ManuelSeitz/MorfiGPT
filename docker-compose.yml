@@ -1,15 +1,15 @@
 services:
   app:
-    build: .
-    user: "node"
+    build:
+      context: .
+      target: development
     container_name: app
-    command: pnpm turbo run dev
+    command: sleep infinity
     volumes:
       - .:/app
       - /app/node_modules
     ports:
       - 3000:3000
-      - 8080:8080
       - 8080:8080
     environment:
       - NODE_ENV=development
@@ -40,5 +40,4 @@ services:
       - postgres
 
 volumes:
-  pnpm_cache:
   pgdata:
