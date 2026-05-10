@@ -5,12 +5,27 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
+      "env": [
+        "NODE_ENV",
+        "JWT_SECRET",
+        "COOKIE_SECRET",
+        "DATABASE_URL",
+        "API_URL",
+        "WEB_URL",
+        "VTEX_SHA256_HASH",
+        "OPENROUTER_API_KEY",
+        "OPENROUTER_MODEL",
+        "HF_API_KEY",
+        "YOUTUBE_API_KEY",
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET",
+        "NEXT_PUBLIC_API_URL"
+      ]
     },
     "start": {
       "cache": false,
-      "persistent": true,
-      "env": ["NODE_ENV", "JWT_SECRET", "DATABASE_URL"]
+      "persistent": true
     },
     "lint": {
       "dependsOn": ["^lint"]
