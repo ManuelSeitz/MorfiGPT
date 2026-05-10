@@ -25,9 +25,9 @@ export default async function RootLayout({
 
   return (
     <html lang="es" className={`${nunitoSans.variable} antialiased`}>
-      <body className="bg-primary-50 flex min-h-screen">
+      <body className="bg-primary-50 flex min-h-dvh">
         <Sidebar />
-        <main className="relative flex h-screen flex-1 flex-col overflow-hidden">
+        <main className="relative flex h-dvh flex-1 flex-col overflow-hidden">
           <Navbar user={user} />
           {children}
         </main>

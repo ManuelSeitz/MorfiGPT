@@ -4,7 +4,7 @@ export default function SearchLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative mt-5 flex h-[calc(100vh-52px)] translate-y-13 flex-col items-center gap-5 overflow-y-auto px-5 transition-all duration-300">
+    <div className="relative mt-5 flex h-[calc(100dvh-52px)] translate-y-13 flex-col items-center gap-5 overflow-y-auto px-5 transition-all duration-300">
       {children}
     </div>
   );
