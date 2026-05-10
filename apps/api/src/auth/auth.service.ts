@@ -77,19 +77,21 @@ export class AuthService {
     res: FastifyReply,
     tokens: { accessToken: string; refreshToken: string },
   ) {
+    const isProd = process.env.NODE_ENV === "production";
+
     res.setCookie("ACCESS_TOKEN", tokens.accessToken, {
       httpOnly: true,
       path: "/",
-      sameSite: "lax",
-      secure: false,
+      sameSite: isProd ? "none" : "lax",
+      secure: isProd,
       maxAge: 60 * 30,
     });
 
     res.setCookie("REFRESH_TOKEN", tokens.refreshToken, {
       httpOnly: true,
       path: "/",
-      sameSite: "lax",
-      secure: false,
+      sameSite: isProd ? "none" : "lax",
+      secure: isProd,
       maxAge: 60 * 60 * 24 * 7,
     });
   }
