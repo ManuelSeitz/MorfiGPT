@@ -1,5 +1,6 @@
 {
-  "*.{js,ts,tsx,json,md}": "prettier --write",
-  "apps/api/**/*.{ts,tsx}": "turbo lint --filter=api --",
-  "apps/web/**/*.{ts,tsx}": "turbo lint --filter=web --"
+  "apps/api/**/*.{js,ts,tsx,json,md}": "turbo run format --filter=api --",
+  "apps/web/**/*.{js,ts,tsx,json,md}": "turbo run format --filter=web --",
+  "apps/api/**/*.{ts,tsx}": "turbo run lint --filter=api --",
+  "apps/web/**/*.{ts,tsx}": "turbo run lint --filter=web --"
 }

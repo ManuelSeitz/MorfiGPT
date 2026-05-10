@@ -30,6 +30,9 @@
     "lint": {
       "dependsOn": ["^lint"]
     },
+    "format": {
+      "outputs": []
+    },
     "check-types": {
       "dependsOn": ["^check-types"]
     },
