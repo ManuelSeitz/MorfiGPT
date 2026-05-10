@@ -20,6 +20,7 @@ import { VtexModule } from "./vtex/vtex.module";
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: `.env.${process.env.NODE_ENV || "development"}.local`,
+      ignoreEnvFile: process.env.NODE_ENV === "production",
     }),
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
