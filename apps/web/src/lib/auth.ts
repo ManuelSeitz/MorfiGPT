@@ -1,48 +1,27 @@
-import { api } from "@/api/client";
 import { AuthenticatedUser } from "@repo/types/auth";
-import { isAxiosError } from "axios";
 import { cookies } from "next/headers";
-import { cache } from "react";
 
-export const getUser = cache(async (): Promise<AuthenticatedUser | null> => {
+export const getUser = async (): Promise<AuthenticatedUser | null> => {
   const cookieStore = await cookies();
   const cookieHeader = cookieStore
     .getAll()
     .map((c) => `${c.name}=${c.value}`)
     .join("; ");
 
-  const token = (await cookies()).get("ACCESS_TOKEN")?.value;
-  if (!token) return null;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-  try {
-    const res = await api.get<AuthenticatedUser>("/auth/me", {
-      headers: {
-        Cookie: cookieHeader,
-      },
-    });
-
-    return res.data;
-  } catch (error) {
-    if (isAxiosError(error) && error.response?.status === 401) {
-      try {
-        const refreshRes = await api.get("/auth/refresh", {
-          headers: { Cookie: cookieHeader },
-        });
-
-        const setCookie = refreshRes.headers["set-cookie"];
-        const newCookies = setCookie
-          ?.map((c: string) => c.split(";")[0])
-          .join("; ");
-
-        const retry = await api.get<AuthenticatedUser>("/auth/me", {
-          headers: { Cookie: newCookies },
-        });
-
-        return retry.data;
-      } catch {
-        return null;
-      }
-    }
-    return null;
+  if (!API_URL) {
+    throw new Error("NEXT_PUBLIC_API_URL is not defined");
   }
-});
+
+  const res = await fetch(`${API_URL}/auth/me`, {
+    headers: {
+      Cookie: cookieHeader,
+    },
+    cache: "no-store",
+  });
+
+  if (!res.ok) return null;
+
+  return res.json() as Promise<AuthenticatedUser>;
+};
