@@ -82,7 +82,7 @@ export class AuthService {
     res.setCookie("ACCESS_TOKEN", tokens.accessToken, {
       httpOnly: true,
       path: "/",
-      sameSite: isProd ? "none" : "lax",
+      sameSite: "lax",
       secure: isProd,
       maxAge: 60 * 30,
     });
@@ -90,7 +90,7 @@ export class AuthService {
     res.setCookie("REFRESH_TOKEN", tokens.refreshToken, {
       httpOnly: true,
       path: "/",
-      sameSite: isProd ? "none" : "lax",
+      sameSite: "lax",
       secure: isProd,
       maxAge: 60 * 60 * 24 * 7,
     });
