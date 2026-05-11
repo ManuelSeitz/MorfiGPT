@@ -114,7 +114,9 @@ export default function TextboxSection() {
     >
       <form
         ref={formRef}
-        onSubmit={void handleSubmit(onSubmit)}
+        onSubmit={(e) => {
+          void handleSubmit(onSubmit)(e);
+        }}
         className="w-full"
       >
         <Textbox
