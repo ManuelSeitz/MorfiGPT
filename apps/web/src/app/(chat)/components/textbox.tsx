@@ -44,7 +44,7 @@ export default function TextboxSection() {
     reset();
     addUserMessage(message);
 
-    const url = new URL("/api/chats/chat");
+    const url = new URL("/api/chats/chat", window.location.origin);
     url.searchParams.append("message", message);
     url.searchParams.append("chatId", chatId);
 
