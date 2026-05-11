@@ -44,7 +44,7 @@ export default function TextboxSection() {
     reset();
     addUserMessage(message);
 
-    const url = new URL("/chats/chat", process.env.NEXT_PUBLIC_API_URL);
+    const url = new URL("/api/chats/chat");
     url.searchParams.append("message", message);
     url.searchParams.append("chatId", chatId);
 
